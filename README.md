@@ -1,1 +1,1 @@
-# Angular 2 Quickstart with Webpack.
+# Calendar app using Angular 2.
