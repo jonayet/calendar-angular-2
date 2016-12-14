@@ -1,3 +1,13 @@
 <div class="calendar">
     {{content}}
+    <div class="row">
+        <div *ngFor='let day of days' class="day col-md-2">
+            <div>
+                {{ day.name }}
+            </div>
+            <div>
+                {{ day.date }}
+            </div>
+        </div>
+    </div>
 </div>
