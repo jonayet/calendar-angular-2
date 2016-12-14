@@ -1,5 +1,9 @@
-import {MenuComponent} from './menu/menu.component';
+import {CalendarComponent} from './calendar/calendar.component';
 
 export const Components = [
-    MenuComponent
+    CalendarComponent
 ];
+
+export const Component = {
+    CalendarComponent
+};
