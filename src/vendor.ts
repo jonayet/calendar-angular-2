@@ -7,3 +7,6 @@ import '@angular/router';
 import '@angular/http';
 import '@angular/platform-browser';
 import '@angular/platform-browser-dynamic';
+
+// Bootstrap
+require('../node_modules/bootstrap/dist/css/bootstrap.css');
