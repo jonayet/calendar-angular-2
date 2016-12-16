@@ -10,3 +10,5 @@ import '@angular/platform-browser-dynamic';
 
 // Bootstrap
 require('../node_modules/bootstrap/dist/css/bootstrap.css');
+
+import 'moment';
