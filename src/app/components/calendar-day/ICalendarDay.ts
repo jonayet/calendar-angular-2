@@ -1,5 +1,5 @@
 import {Moment} from 'moment';
-import {IEvent} from './IEvent'
+import {ICalendarEvent} from './ICalendarEvent'
 
 export interface ICalendarDay {
     day: string;
@@ -8,5 +8,5 @@ export interface ICalendarDay {
     isToday: boolean;
     isSelected: boolean;
     moment: Moment;
-    event: IEvent;
+    events: ICalendarEvent[];
 }
