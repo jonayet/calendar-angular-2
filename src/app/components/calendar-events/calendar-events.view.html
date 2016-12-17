@@ -7,6 +7,6 @@
             {{event.title}}
         </div>
     </div>
-    <button (click)="addClicked()">Add</button>
-    <calendar-add-event [day]="day" ></calendar-add-event>
+    <button (click)="addEvent()">Add</button>
+    <calendar-add-event [day]="day" (onEventAdded)="eventAdded($event)"></calendar-add-event>
 </div>

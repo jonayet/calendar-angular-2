@@ -1,3 +1,12 @@
 <div class="calendar-next-event">
-    {{content}}
+    <div *ngIf="!nextEvent">
+        No Event
+    </div>
+    <div *ngIf="nextEvent">
+        Next Event: {{nextEvent.title}}
+        <br>
+        {{nextEvent.start.format('hh:mm a')}}
+        <br>
+        In: {{getRemainingTime()}}
+    </div>
 </div>

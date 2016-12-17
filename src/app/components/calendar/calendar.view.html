@@ -15,6 +15,6 @@
             Next
         </button>
     </div>
-    <calendar-events [day]="selectedDay" [events]="selectedDay.events" (onAddEvent)="onAddEvent($event)"></calendar-events>
+    <calendar-events [day]="selectedDay" [events]="selectedDay.events" (onEventAdded)="onEventAdded($event)"></calendar-events>
     <calendar-next-event></calendar-next-event>
 </div>

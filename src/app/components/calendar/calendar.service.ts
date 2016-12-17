@@ -49,6 +49,23 @@ export class CalendarService {
         this.calendarPersistService.save(this.eventsMap);
     }
 
+    getNextEvent(): ICalendarEvent{
+        let event: ICalendarEvent = null;
+        const now = moment();
+        const validDays = this.days.filter((day) => {
+            return day.moment.diff(now, 'days') >= 0 && day.events.length > 0;
+        });
+        if(!validDays.length){ return event; }
+
+        for(let day of validDays){
+            event = day.events.find((event) => {
+                return event.start.diff(now, 'minutes') >= 0;
+            });
+            if(event) {break;}
+        }
+        return event;
+    }
+
     private lastMonth;
     private getMonth(moment: moment.Moment){
         let month = moment.format('MMMM');

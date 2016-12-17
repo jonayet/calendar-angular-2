@@ -11,15 +11,19 @@ import {CalendarAddEventComponent} from '../calendar-add-event/calendar-add-even
 export class CalendarEventsComponent {
     @Input() day: ICalendarDay;
     @Input() events: ICalendarEvent[];
-    @Output() onAddEvent = new EventEmitter<ICalendarDay>();
+    @Output() onEventAdded = new EventEmitter<ICalendarDay>();
     @ViewChild(CalendarAddEventComponent) addEventComponent: CalendarAddEventComponent;
 
     constructor() {
 
     }
 
-    addClicked(){
+    addEvent(){
         this.addEventComponent.open();
-        this.onAddEvent.emit(this.day);
+        this.onEventAdded.emit(this.day);
+    }
+
+    eventAdded(event){
+        this.onEventAdded.emit(event);
     }
 }
