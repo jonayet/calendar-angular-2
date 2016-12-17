@@ -1,6 +1,6 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {ICalendarEvent} from '../calendar-day/ICalendarEvent';
-import {ICalendarDay} from '../calendar-day/ICalendarDay';
+import {ICalendarEvent} from '../calendar/ICalendarEvent';
+import {ICalendarDay} from '../calendar/ICalendarDay';
 
 @Component({
     selector: 'calendar-events',

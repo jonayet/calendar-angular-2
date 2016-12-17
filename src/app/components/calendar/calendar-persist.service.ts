@@ -1,6 +1,6 @@
 import * as moment from 'moment';
 import {Injectable} from '@angular/core';
-import {ICalendarEvent} from '../calendar-day/ICalendarEvent';
+import {ICalendarEvent} from '../calendar/ICalendarEvent';
 
 @Injectable()
 export class CalendarPersistService {

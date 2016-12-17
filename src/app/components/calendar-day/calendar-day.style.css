@@ -5,3 +5,25 @@
     display: inline-block;
     background: #e5e5e5;
 }
+
+.calendar-day.calendar-day_today{
+    border: solid medium green;
+}
+
+.calendar-day.calendar-day_selected{
+    border: solid medium blueviolet;
+}
+
+.calendar-day .calendar-day_event{
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.calendar-day .calendar-day_event_icon{
+}
+
+.calendar-day .calendar-day_event_icon .calendar-day_event_icon_red{
+    width: 10px;
+    height: 10px;
+    background: red;
+}

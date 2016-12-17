@@ -1,7 +1,7 @@
 import * as moment from 'moment';
 import {Injectable} from '@angular/core';
-import {ICalendarDay} from '../calendar-day/ICalendarDay';
-import {ICalendarEvent} from "../calendar-day/ICalendarEvent";
+import {ICalendarDay} from '../calendar/ICalendarDay';
+import {ICalendarEvent} from "../calendar/ICalendarEvent";
 import {CalendarPersistService} from './calendar-persist.service';
 
 @Injectable()
