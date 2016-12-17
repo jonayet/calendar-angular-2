@@ -1,17 +1,14 @@
 import * as moment from 'moment';
 import {Component} from '@angular/core';
-import {ICalendarDay} from '../calendar/ICalendarDay';
+import {ICalendarDay} from './ICalendarDay';
 import {CalendarService} from './calendar.service';
-import {CalendarPersistService} from './calendar-persist.service';
 
 @Component({
     selector: 'calendar',
     templateUrl: './calendar.view.html',
-    styleUrls: ['./calendar.style.css'],
-    providers: [CalendarService, CalendarPersistService]
+    styleUrls: ['./calendar.style.css']
 })
 export class CalendarComponent {
-    content: string = 'Calendar';
     days: ICalendarDay[] = [];
     selectedDay: ICalendarDay = null;
 
@@ -31,51 +28,18 @@ export class CalendarComponent {
         this.days = this.calendarService.getNextDays(startDate, 7, this.selectedDay.moment);
     }
 
-    private updateSelectedDay(selectedDay: ICalendarDay){
-        this.selectedDay = selectedDay;
-        this.days.forEach((day) => {
-           day.isSelected = day.moment.isSame(this.selectedDay.moment, 'day');
-        });
-    }
-
     onDaySelect(day: ICalendarDay): void {
         this.updateSelectedDay(day);
-        // this.selectedDay.events = [
-        //     {
-        //         title: 'Event 1',
-        //         description: 'desc 1',
-        //         iconColor: 'red',
-        //         remindBefore: 10,
-        //         start: moment(),
-        //         end: moment().add(1, 'hours')
-        //     },
-        //     {
-        //         title: 'Event 2',
-        //         description: 'desc 2',
-        //         iconColor: 'red',
-        //         remindBefore: 10,
-        //         start: moment(),
-        //         end: moment().add(1, 'hours')
-        //     },
-        //     {
-        //         title: 'Event 3',
-        //         description: 'desc 3',
-        //         iconColor: 'red',
-        //         remindBefore: 10,
-        //         start: moment(),
-        //         end: moment().add(1, 'hours')
-        //     }
-        // ];
     }
 
     onAddEvent(day: ICalendarDay): void {
-        this.calendarService.addEvent(day, {
-            title: 'Event 1',
-            description: 'desc 1',
-            iconColor: 'red',
-            remindBefore: 10,
-            start: moment(),
-            end: moment().add(1, 'hours')
+
+    }
+
+    private updateSelectedDay(selectedDay: ICalendarDay){
+        this.selectedDay = selectedDay;
+        this.days.forEach((day) => {
+            day.isSelected = day.moment.isSame(this.selectedDay.moment, 'day');
         });
     }
 }

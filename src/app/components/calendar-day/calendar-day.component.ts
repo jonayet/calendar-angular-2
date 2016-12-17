@@ -9,6 +9,7 @@ import {ICalendarDay} from '../calendar/ICalendarDay';
 export class CalendarDayComponent {
     @Input() day: ICalendarDay;
     @Output() onSelect = new EventEmitter<ICalendarDay>();
+
     maxEventsToShow = 3;
 
     constructor() {
