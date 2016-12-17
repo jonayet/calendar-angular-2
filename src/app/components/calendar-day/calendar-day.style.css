@@ -20,10 +20,6 @@
 }
 
 .calendar-day .calendar-day_event_icon{
-}
-
-.calendar-day .calendar-day_event_icon .calendar-day_event_icon_red{
     width: 10px;
     height: 10px;
-    background: red;
 }

@@ -6,9 +6,8 @@
     {{day.date}}
     <br>
     <div *ngFor="let event of day.events.slice(0, maxEventsToShow); let index = index;" class="calendar-day_event">
-        <div *ngIf="index <= maxEventsToShow" class="calendar-day_event_icon">
-            <div class="calendar-day_event_icon_red">
-            </div>
+        <div *ngIf="index <= maxEventsToShow" class="calendar-day_event_icon" [ngStyle]="{'background': event.iconColor}">
+
         </div>
     </div>
     <div *ngIf="day.events.length > maxEventsToShow" class="calendar-day_event">

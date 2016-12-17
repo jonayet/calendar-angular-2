@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import {Component, Input, OnInit, OnChanges} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {CalendarService} from '../calendar/calendar.service';
 import {ICalendarEvent} from '../calendar/ICalendarEvent';
 import {ICalendarDay} from '../calendar/ICalendarDay';
@@ -9,7 +9,7 @@ import {ICalendarDay} from '../calendar/ICalendarDay';
     templateUrl: './calendar-add-event.view.html',
     styleUrls: ['./calendar-add-event.style.css']
 })
-export class CalendarAddEventComponent implements OnInit, OnChanges{
+export class CalendarAddEventComponent{
     @Input() day: ICalendarDay;
 
     event: ICalendarEvent;
@@ -17,25 +17,14 @@ export class CalendarAddEventComponent implements OnInit, OnChanges{
     startTime: string;
     endTime: string;
     iconColors: string[] = [
-        '#ccc',
+        'red',
         'green',
         'blue'
     ];
+    isVisible: boolean = false;
 
     constructor(private calendarService: CalendarService) {
-        this.event = <ICalendarEvent>{};
-    }
 
-    ngOnInit() {
-        this.startTime = moment().format('hh:mm');
-        this.endTime = moment().add(1, 'hours').format('hh:mm');
-        this.event.iconColor = this.iconColors[0];
-    }
-
-    ngOnChanges(changes) {
-        if(changes.day) {
-            this.date = changes.day.currentValue.moment.format('YYYY-MM-DD');
-        }
     }
 
     onStartTimeChange(startTime){
@@ -50,6 +39,25 @@ export class CalendarAddEventComponent implements OnInit, OnChanges{
         let day = <ICalendarDay>{};
         day.moment = moment(this.date);
         this.calendarService.addEvent(day, event);
+        this.close();
+    }
+
+    open(){
+        this.isVisible = true;
+        this.initialize();
+    }
+
+    close(){
+        this.isVisible = false;
+    }
+
+    private initialize(){
+        this.event = <ICalendarEvent>{};
+        this.event.iconColor = this.iconColors[0];
+
+        this.date = this.day.moment.format('YYYY-MM-DD');
+        this.startTime = moment().format('hh:mm');
+        this.endTime = moment().add(1, 'hours').format('hh:mm');
     }
 
     private constructTime(dateStr: string, timeStr: string){
