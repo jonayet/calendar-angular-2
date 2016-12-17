@@ -2,7 +2,6 @@ import * as moment from 'moment';
 import {Component, ViewChild} from '@angular/core';
 import {ICalendarDay} from './ICalendarDay';
 import {CalendarService} from './calendar.service';
-import {CalendarAddEventComponent} from '../calendar-add-event/calendar-add-event.component';
 
 @Component({
     selector: 'calendar',
@@ -10,8 +9,6 @@ import {CalendarAddEventComponent} from '../calendar-add-event/calendar-add-even
     styleUrls: ['./calendar.style.css']
 })
 export class CalendarComponent {
-    @ViewChild(CalendarAddEventComponent) addEventComponent: CalendarAddEventComponent;
-
     days: ICalendarDay[] = [];
     selectedDay: ICalendarDay = null;
 
@@ -36,7 +33,7 @@ export class CalendarComponent {
     }
 
     onAddEvent(day: ICalendarDay): void {
-        this.addEventComponent.open();
+
     }
 
     private updateSelectedDay(selectedDay: ICalendarDay){
