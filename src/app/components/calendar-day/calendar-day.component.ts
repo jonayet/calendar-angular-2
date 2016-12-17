@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {ICalendarDay} from './ICalendarDay';
+import {ICalendarDay} from '../calendar/ICalendarDay';
 
 @Component({
     selector: 'calendar-day',
@@ -9,6 +9,7 @@ import {ICalendarDay} from './ICalendarDay';
 export class CalendarDayComponent {
     @Input() day: ICalendarDay;
     @Output() onSelect = new EventEmitter<ICalendarDay>();
+    maxEventsToShow = 3;
 
     constructor() {
 

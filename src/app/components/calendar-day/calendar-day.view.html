@@ -1,9 +1,17 @@
-<div class="calendar-day" (click)="selected()">
+<div (click)="selected()"
+     class="calendar-day"
+     [ngClass]="{'calendar-day_selected': day.isSelected, 'calendar-day_today': day.isToday}">
     {{day.day}}
     <br>
     {{day.date}}
     <br>
-    Today: {{day.isToday}}
-    <br>
-    Selected: {{day.isSelected}}
+    <div *ngFor="let event of day.events.slice(0, maxEventsToShow); let index = index;" class="calendar-day_event">
+        <div *ngIf="index <= maxEventsToShow" class="calendar-day_event_icon">
+            <div class="calendar-day_event_icon_red">
+            </div>
+        </div>
+    </div>
+    <div *ngIf="day.events.length > maxEventsToShow" class="calendar-day_event">
+        +{{day.events.length - maxEventsToShow}}
+    </div>
 </div>

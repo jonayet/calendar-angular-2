@@ -1,6 +1,6 @@
 import * as moment from 'moment';
 import {Component} from '@angular/core';
-import {ICalendarDay} from '../calendar-day/ICalendarDay';
+import {ICalendarDay} from '../calendar/ICalendarDay';
 import {CalendarService} from './calendar.service';
 import {CalendarPersistService} from './calendar-persist.service';
 
