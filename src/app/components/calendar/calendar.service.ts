@@ -1,12 +1,13 @@
 import * as moment from 'moment';
 import {Injectable} from '@angular/core';
-import {ICalendarDay} from '../calendar/ICalendarDay';
-import {ICalendarEvent} from "../calendar/ICalendarEvent";
+import {ICalendarDay} from './ICalendarDay';
+import {ICalendarEvent} from "./ICalendarEvent";
 import {CalendarPersistService} from './calendar-persist.service';
 
 @Injectable()
 export class CalendarService {
     private eventsMap: Map<string, ICalendarEvent[]> = new Map<string, ICalendarEvent[]>();
+    private days: ICalendarDay[] = [];
 
     constructor(private calendarPersistService: CalendarPersistService){
         this.eventsMap = this.calendarPersistService.load();
@@ -14,11 +15,11 @@ export class CalendarService {
 
     getNextDays(dateFrom: moment.Moment, noOfDays: number, selectedDate: moment.Moment,): ICalendarDay[] {
         const date = dateFrom.clone();
-        let days: ICalendarDay[] = [];
+        this.days = [];
         this.lastMonth = '';
 
         for (let i = 0; i < noOfDays; i++){
-            days.push({
+            this.days.push({
                 day: date.format('dddd'),
                 date: date.date(),
                 month: this.getMonth(date),
@@ -29,13 +30,22 @@ export class CalendarService {
             });
             date.add(1, 'days');
         }
-        return days;
+        return this.days;
+    }
+
+    bindEvents(day: ICalendarDay, events: ICalendarEvent[]){
+        const targetDay = this.days.find((_day) => {
+            return _day.moment.isSame(day.moment, 'day')
+        });
+        if(targetDay){
+            targetDay.events = events;
+        }
     }
 
     addEvent(day: ICalendarDay, event: ICalendarEvent){
         let events = this.getDayEvents(day.moment);
         events.push(event);
-        day.events = events;
+        this.bindEvents(day, events);
         this.calendarPersistService.save(this.eventsMap);
     }
 
