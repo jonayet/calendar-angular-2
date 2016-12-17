@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import {Component, Input} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {CalendarService} from '../calendar/calendar.service';
 import {ICalendarEvent} from '../calendar/ICalendarEvent';
 import {ICalendarDay} from '../calendar/ICalendarDay';
@@ -11,7 +11,7 @@ import {ICalendarDay} from '../calendar/ICalendarDay';
 })
 export class CalendarAddEventComponent{
     @Input() day: ICalendarDay;
-
+    @Output() onEventAdded = new EventEmitter<ICalendarEvent>();
     event: ICalendarEvent;
     date: string;
     startTime: string;
@@ -39,6 +39,7 @@ export class CalendarAddEventComponent{
         let day = <ICalendarDay>{};
         day.moment = moment(this.date);
         this.calendarService.addEvent(day, event);
+        this.onEventAdded.emit(event);
         this.close();
     }
 
