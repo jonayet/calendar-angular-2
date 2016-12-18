@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { Component } from './components/index';
+import { Components } from './components/index';
 
 export const routes: Routes = [
-    { path: '',  component: Component.CalendarComponent },
+    { path: '',  component: Components.CalendarComponent },
 ];

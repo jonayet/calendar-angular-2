@@ -1,5 +1,6 @@
 import * as moment from 'moment';
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Observable} from 'rxjs';
 import {ICalendarDay} from '../calendar/ICalendarDay';
 import {ICalendarEvent} from '../calendar/ICalendarEvent';
 import {CalendarService} from '../calendar/calendar.service';
@@ -9,25 +10,37 @@ import {CalendarService} from '../calendar/calendar.service';
     templateUrl: './calendar-next-event.view.html',
     styleUrls: ['./calendar-next-event.style.css']
 })
-export class CalendarNextEventComponent implements OnInit{
+export class CalendarNextEventComponent implements OnInit, OnDestroy{
     nextEvent: ICalendarEvent;
+    remainingTime: string;
+    private subscription;
+    private timerInterval = 5000;
 
     constructor(private calendarService: CalendarService) {
 
     }
 
     ngOnInit() {
-        this.calendarService.onNextEventUpdate.subscribe((event: ICalendarEvent) => {
-           console.log(event);
-        });
+        this.startNotificationTimer();
+    }
+
+    ngOnDestroy(){
+        this.stopNotificationTimer();
     }
 
     showNextEvent(){
         this.nextEvent = this.calendarService.getNextEvent();
+        this.remainingTime = this.nextEvent.start.from(moment());
     }
 
-    getRemainingTime(){
-        if(!this.nextEvent) {return ''}
-        return this.nextEvent.start.diff(moment(), 'minutes');
+    private startNotificationTimer(){
+        let timer = Observable.timer(this.timerInterval, this.timerInterval);
+        this.subscription = timer.subscribe(() => {
+            this.showNextEvent();
+        });
+    }
+
+    private stopNotificationTimer(){
+        this.subscription.unsubscribe();
     }
 }

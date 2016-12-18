@@ -4,9 +4,7 @@ import { BrowserModule }  from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import {CalendarService} from './components/calendar/calendar.service';
-import {CalendarPersistService} from './components/calendar/calendar-persist.service';
-import { Components } from './components/index';
+import { ComponentRegistry, ProviderRegistry } from './components/index';
 import { routes } from './app.router';
 
 @NgModule({
@@ -17,15 +15,14 @@ import { routes } from './app.router';
     ],
     declarations: [
         AppComponent,
-        ...Components
+        ...ComponentRegistry
     ],
     providers: [
         {
             provide: LocationStrategy,
             useClass: HashLocationStrategy
         },
-        CalendarService,
-        CalendarPersistService
+        ...ProviderRegistry
     ],
     bootstrap: [ AppComponent ]
 })

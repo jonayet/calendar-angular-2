@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import {Injectable, EventEmitter} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {ICalendarDay} from './ICalendarDay';
 import {ICalendarEvent} from "./ICalendarEvent";
 import {CalendarPersistService} from './calendar-persist.service';
@@ -8,7 +8,6 @@ import {CalendarPersistService} from './calendar-persist.service';
 export class CalendarService {
     private eventsMap: Map<string, ICalendarEvent[]> = new Map<string, ICalendarEvent[]>();
     private days: ICalendarDay[] = [];
-    onNextEventUpdate: EventEmitter<ICalendarEvent> = new EventEmitter();
 
     constructor(private calendarPersistService: CalendarPersistService){
         this.eventsMap = this.calendarPersistService.load();
@@ -39,7 +38,7 @@ export class CalendarService {
             return _day.moment.isSame(day.moment, 'day')
         });
         if(targetDay){
-            targetDay.events = events;
+            targetDay.events = this.sortEvents(events);
         }
     }
 
@@ -54,13 +53,13 @@ export class CalendarService {
         let event: ICalendarEvent = null;
         const now = moment();
         const validDays = this.days.filter((day) => {
-            return day.moment.diff(now, 'days') >= 0 && day.events.length > 0;
+            return day.moment.isSameOrAfter(now, 'days') && day.events.length > 0;
         });
         if(!validDays.length){ return event; }
 
         for(let day of validDays){
             event = day.events.find((event) => {
-                return event.start.diff(now, 'minutes') >= 0;
+                return event.start.isSameOrAfter(now, 'minutes');
             });
             if(event) {break;}
         }
@@ -78,6 +77,12 @@ export class CalendarService {
         return month;
     }
 
+    private sortEvents(events: ICalendarEvent[]): ICalendarEvent[]{
+        return events.sort((event1, event2) => {
+            return event1.start.diff(event2.start, 'minutes');
+        })
+    }
+
     private getDayEvents(date: moment.Moment){
         const mapKey = date.format('YYMMDD');
         let events;
@@ -87,6 +92,6 @@ export class CalendarService {
         } else {
             events = this.eventsMap.get(mapKey);
         }
-        return events;
+        return this.sortEvents(events);
     }
 }
