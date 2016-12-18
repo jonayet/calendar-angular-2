@@ -1,3 +1,5 @@
+var pathResolver = require('./path-resolver');
+
 module.exports = {
     devtool: 'inline-source-map',
 
@@ -13,12 +15,12 @@ module.exports = {
             },
             {
                 test: /\.(html|css)$/,
-                include: /src\/app/,
+                include: pathResolver.fullPath('src', 'app'),
                 loader: 'raw-loader'
             },
             {
                 test: /\.css$/,
-                exclude: /src\/app/,
+                exclude: pathResolver.fullPath('src', 'app'),
                 loader: 'null-loader'
             },
             {

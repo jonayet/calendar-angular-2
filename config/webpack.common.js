@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var pathResolver = require('./path-resolver');
 
 module.exports = {
     entry: {
@@ -22,27 +23,27 @@ module.exports = {
             },
             {
                 test: /\.html$/,
-                include: /src\/app/,
+                include: pathResolver.fullPath('src', 'app'),
                 loader: 'html-loader'
             },
             {
                 test: /\.css$/,
-                include: /src\/app/,
+                include: pathResolver.fullPath('src', 'app'),
                 loader: 'raw-loader'
             },
             // {
             //     test: /\.scss$/,
-            //     include: /src\/app/,
+            //     include: pathResolver.fullPath('src', 'app'),
             //     loaders: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
             // },
             // {
             //     test: /\.css$/,
-            //     include: /src\/app/,
+            //     include: pathResolver.fullPath('src', 'app'),
             //     loaders: ['style-loader', 'css-loader']
             // },
             {
                 test: /\.css$/,
-                exclude: /src\/app/,
+                exclude: pathResolver.fullPath('src', 'app'),
                 loader: ExtractTextPlugin.extract('style', 'css?sourceMap')
             },
             {
