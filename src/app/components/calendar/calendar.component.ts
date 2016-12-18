@@ -25,13 +25,13 @@ export class CalendarComponent implements OnInit{
         this.nextEventComponent.showNextEvent();
     }
 
-    changeToNext(){
+    showNextDays(){
         const startDate = this.days[0].moment.add(1, 'days');
         this.days = this.calendarService.getNextDays(startDate, 7, this.selectedDay.moment);
         this.nextEventComponent.showNextEvent();
     }
 
-    changeToPrevious(){
+    showPreviousDays(){
         const startDate = this.days[0].moment.subtract(1, 'days');
         this.days = this.calendarService.getNextDays(startDate, 7, this.selectedDay.moment);
         this.nextEventComponent.showNextEvent();
@@ -41,7 +41,7 @@ export class CalendarComponent implements OnInit{
         this.updateSelectedDay(day);
     }
 
-    onEventAdded(day: ICalendarDay): void {
+    afterEventAdded(day: ICalendarDay): void {
         this.nextEventComponent.showNextEvent();
     }
 

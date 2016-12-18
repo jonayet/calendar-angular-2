@@ -8,5 +8,5 @@
         </div>
     </div>
     <button (click)="addEvent()">Add</button>
-    <calendar-add-event [day]="day" (onEventAdded)="eventAdded($event)"></calendar-add-event>
+    <calendar-add-event [day]="day" (afterEventAdded)="eventAdded($event)"></calendar-add-event>
 </div>

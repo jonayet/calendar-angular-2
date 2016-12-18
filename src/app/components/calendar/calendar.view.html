@@ -5,16 +5,16 @@
         </div>
     </div>
     <div class="row">
-        <button (click)="changeToPrevious()">
+        <button (click)="showPreviousDays()">
             Previous
         </button>
         <div *ngFor='let day of days' class="day col-md-1">
-            <calendar-day [day]="day" (onSelect)="onDaySelect($event)">></calendar-day>
+            <calendar-day [day]="day" (onSelect)="onDaySelect($event)"></calendar-day>
         </div>
-        <button (click)="changeToNext()">
+        <button (click)="showNextDays()">
             Next
         </button>
     </div>
-    <calendar-events [day]="selectedDay" [events]="selectedDay.events" (onEventAdded)="onEventAdded($event)"></calendar-events>
+    <calendar-events [day]="selectedDay" [events]="selectedDay.events" (afterEventAdded)="afterEventAdded($event)"></calendar-events>
     <calendar-next-event></calendar-next-event>
 </div>

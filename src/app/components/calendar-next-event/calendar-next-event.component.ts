@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ICalendarDay} from '../calendar/ICalendarDay';
 import {ICalendarEvent} from '../calendar/ICalendarEvent';
 import {CalendarService} from '../calendar/calendar.service';
@@ -9,11 +9,17 @@ import {CalendarService} from '../calendar/calendar.service';
     templateUrl: './calendar-next-event.view.html',
     styleUrls: ['./calendar-next-event.style.css']
 })
-export class CalendarNextEventComponent {
+export class CalendarNextEventComponent implements OnInit{
     nextEvent: ICalendarEvent;
 
     constructor(private calendarService: CalendarService) {
 
+    }
+
+    ngOnInit() {
+        this.calendarService.onNextEventUpdate.subscribe((event: ICalendarEvent) => {
+           console.log(event);
+        });
     }
 
     showNextEvent(){

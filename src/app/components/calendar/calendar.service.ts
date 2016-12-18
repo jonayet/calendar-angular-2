@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import {Injectable} from '@angular/core';
+import {Injectable, EventEmitter} from '@angular/core';
 import {ICalendarDay} from './ICalendarDay';
 import {ICalendarEvent} from "./ICalendarEvent";
 import {CalendarPersistService} from './calendar-persist.service';
@@ -8,6 +8,7 @@ import {CalendarPersistService} from './calendar-persist.service';
 export class CalendarService {
     private eventsMap: Map<string, ICalendarEvent[]> = new Map<string, ICalendarEvent[]>();
     private days: ICalendarDay[] = [];
+    onNextEventUpdate: EventEmitter<ICalendarEvent> = new EventEmitter();
 
     constructor(private calendarPersistService: CalendarPersistService){
         this.eventsMap = this.calendarPersistService.load();

@@ -11,7 +11,7 @@ import {CalendarAddEventComponent} from '../calendar-add-event/calendar-add-even
 export class CalendarEventsComponent {
     @Input() day: ICalendarDay;
     @Input() events: ICalendarEvent[];
-    @Output() onEventAdded = new EventEmitter<ICalendarDay>();
+    @Output() afterEventAdded = new EventEmitter<ICalendarDay>();
     @ViewChild(CalendarAddEventComponent) addEventComponent: CalendarAddEventComponent;
 
     constructor() {
@@ -20,10 +20,9 @@ export class CalendarEventsComponent {
 
     addEvent(){
         this.addEventComponent.open();
-        this.onEventAdded.emit(this.day);
     }
 
     eventAdded(event){
-        this.onEventAdded.emit(event);
+        this.afterEventAdded.emit(this.day);
     }
 }

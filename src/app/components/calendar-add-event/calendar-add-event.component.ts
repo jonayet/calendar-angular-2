@@ -11,7 +11,7 @@ import {ICalendarDay} from '../calendar/ICalendarDay';
 })
 export class CalendarAddEventComponent{
     @Input() day: ICalendarDay;
-    @Output() onEventAdded = new EventEmitter<ICalendarEvent>();
+    @Output() afterEventAdded = new EventEmitter<ICalendarEvent>();
     event: ICalendarEvent;
     date: string;
     startTime: string;
@@ -39,13 +39,13 @@ export class CalendarAddEventComponent{
         let day = <ICalendarDay>{};
         day.moment = moment(this.date);
         this.calendarService.addEvent(day, event);
-        this.onEventAdded.emit(event);
+        this.afterEventAdded.emit(event);
         this.close();
     }
 
     open(){
-        this.isVisible = true;
         this.initialize();
+        this.isVisible = true;
     }
 
     close(){
@@ -57,13 +57,13 @@ export class CalendarAddEventComponent{
         this.event.iconColor = this.iconColors[0];
 
         this.date = this.day.moment.format('YYYY-MM-DD');
-        this.startTime = moment().format('hh:mm');
-        this.endTime = moment().add(1, 'hours').format('hh:mm');
+        this.startTime = moment().format('HH:mm');
+        this.endTime = moment().add(1, 'hours').format('HH:mm');
     }
 
     private constructTime(dateStr: string, timeStr: string){
         let date = moment(dateStr);
-        let time = moment(timeStr, 'hh:mm');
+        let time = moment(timeStr, 'HH:mm');
         return date.set({
             hour: time.get('hour'),
             minute: time.get('minute'),
