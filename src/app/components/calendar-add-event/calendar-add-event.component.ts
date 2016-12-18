@@ -1,5 +1,6 @@
 import * as moment from 'moment';
-import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import {CalendarService} from '../calendar/calendar.service';
 import {ICalendarEvent} from '../calendar/ICalendarEvent';
 import {ICalendarDay} from '../calendar/ICalendarDay';
@@ -9,9 +10,9 @@ import {ICalendarDay} from '../calendar/ICalendarDay';
     templateUrl: './calendar-add-event.view.html',
     styleUrls: ['./calendar-add-event.style.css']
 })
-export class CalendarAddEventComponent{
-    @Input() day: ICalendarDay;
-    @Output() afterEventAdded = new EventEmitter<ICalendarEvent>();
+export class CalendarAddEventComponent implements OnInit{
+    //@Input() day: ICalendarDay;
+    //@Output() afterEventAdded = new EventEmitter<ICalendarEvent>();
     event: ICalendarEvent;
     date: string;
     startTime: string;
@@ -21,10 +22,17 @@ export class CalendarAddEventComponent{
         'green',
         'blue'
     ];
-    isVisible: boolean = false;
+    isVisible: boolean = true;
 
-    constructor(private calendarService: CalendarService) {
+    constructor(private router: Router, private route: ActivatedRoute, private calendarService: CalendarService) {
 
+    }
+
+    ngOnInit(){
+        this.initialize();
+        this.route.params.subscribe((params) => {
+            this.date = params['date'];
+        });
     }
 
     onStartTimeChange(startTime){
@@ -39,8 +47,10 @@ export class CalendarAddEventComponent{
         let day = <ICalendarDay>{};
         day.moment = moment(this.date);
         this.calendarService.addEvent(day, event);
-        this.afterEventAdded.emit(event);
-        this.close();
+        this.router.navigate(['/']);
+
+        //this.afterEventAdded.emit(event);
+        //this.close();
     }
 
     open(){
@@ -49,14 +59,15 @@ export class CalendarAddEventComponent{
     }
 
     close(){
-        this.isVisible = false;
+        //this.isVisible = false;
+        this.router.navigate(['/']);
     }
 
     private initialize(){
         this.event = <ICalendarEvent>{};
         this.event.iconColor = this.iconColors[0];
 
-        this.date = this.day.moment.format('YYYY-MM-DD');
+        //this.date = this.day.moment.format('YYYY-MM-DD');
         this.startTime = moment().format('HH:mm');
         this.endTime = moment().add(1, 'hours').format('HH:mm');
     }

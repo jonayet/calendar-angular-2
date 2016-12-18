@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
     styleUrls: ['./app.style.css']
 })
 export class AppComponent {
-    content: string = 'Angular 2 Quickstart';
     constructor() {
 
     }
