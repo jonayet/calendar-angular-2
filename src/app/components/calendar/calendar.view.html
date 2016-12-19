@@ -1,20 +1,23 @@
 <div class="calendar">
     <div class="row">
-        <div class="col-sm-6 col-md-12">
-            <div class="col-sm-12 col-md-offset-1 col-md-1">
+        <div class="col-xs-6 col-md-12">
+            <div class="col-xs-12 col-md-offset-1 col-md-1">
                 <button (click)="showPreviousDays()">
                     Previous
                 </button>
             </div>
 
-            <div *ngFor='let day of days' class="calendar_days col-sm-12 col-md-1">
-                <div class="calendar_month">
+            <div *ngFor='let day of days' class="calendar_days col-xs-12 col-md-1">
+                <div class="calendar_month hidden-xs hidden-sm">
                     {{day.month}}
                 </div>
-                <calendar-day [day]="day" (onSelect)="onDaySelect($event)" class="calendar_day"></calendar-day>
+                <div *ngIf="day.month" class="calendar_month hidden-md hidden-lg">
+                    {{day.month}}
+                </div>
+                <calendar-day [day]="day" (onSelect)="onDaySelect($event)"></calendar-day>
             </div>
 
-            <div class="col-sm-12 col-md-1">
+            <div class="col-xs-12 col-md-1">
                 <button (click)="showNextDays()">
                     Next
                 </button>

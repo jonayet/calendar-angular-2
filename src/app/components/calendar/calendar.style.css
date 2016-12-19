@@ -1,20 +1,14 @@
 .calendar{
-    position: relative;
-}
-
-.calendar .calendar_days{
-    position: relative;
-    padding: 2px;
-}
-
-.calendar .calendar_day{
 
 }
 
 .calendar .calendar_month{
-    width: 100%;
-    font-size: 1.5em;
-    position: absolute;
-    right: 10px;
-    top: -30px;
+    font-size: 1.1em;
+    min-height: 21px;
+    text-align: center;
+    margin: 5px 0;
+}
+
+.calendar .calendar_days{
+    padding: 2px;
 }
