@@ -12,3 +12,61 @@
 .calendar .calendar_days{
     padding: 2px;
 }
+
+.calendar .calendar_col-2-top-offset{
+    margin-top: 30px;
+}
+
+
+button {
+    -webkit-appearance: none;
+    background: transparent;
+    border: 0;
+    outline:0;
+}
+
+svg {
+    padding: 5px;
+}
+
+.arrow {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    margin-top: -45px;
+    margin-left: -35px;
+    width: 70px;
+    height: 90px;
+}
+
+.left {
+    left: 42%;
+}
+
+.right {
+    left: 58%;
+}
+
+.left:hover polyline,
+.left:focus polyline {
+    stroke-width: 3;
+}
+
+.left:active polyline {
+    stroke-width: 6;
+    transition: all 100ms ease-in-out;
+}
+
+.right:hover polyline,
+.right:focus polyline {
+    stroke-width: 3;
+}
+
+.right:active polyline {
+    stroke-width: 6;
+    transition: all 100ms ease-in-out;
+}
+
+polyline {
+    transition: all 250ms ease-in-out;
+}

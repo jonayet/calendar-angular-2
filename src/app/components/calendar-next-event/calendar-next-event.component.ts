@@ -12,9 +12,11 @@ import {CalendarService} from '../calendar/calendar.service';
 })
 export class CalendarNextEventComponent implements OnInit, OnDestroy{
     nextEvent: ICalendarEvent;
-    remainingTime: string;
+    eventTime: string;
+    showWarning: boolean = false;
+
     private subscription;
-    private timerInterval = 5000;
+    private timerInterval = 1000;
 
     constructor(private calendarService: CalendarService) {
 
@@ -31,7 +33,16 @@ export class CalendarNextEventComponent implements OnInit, OnDestroy{
     showNextEvent(){
         this.nextEvent = this.calendarService.getNextEvent();
         if(!this.nextEvent) {return;}
-        this.remainingTime = this.nextEvent.start.from(moment());
+
+        const now = moment();
+        const duration = moment.duration(this.nextEvent.start.diff(now));
+        this.showWarning = duration.asMinutes() <= 5;
+
+        if(duration.asMinutes() > 60){
+            this.eventTime = this.nextEvent.start.calendar();
+        } else {
+            this.eventTime = duration.hours() + ":" + this.padZero(duration.minutes()) + ":" + this.padZero(duration.seconds());
+        }
     }
 
     private startNotificationTimer(){
@@ -43,5 +54,9 @@ export class CalendarNextEventComponent implements OnInit, OnDestroy{
 
     private stopNotificationTimer(){
         this.subscription.unsubscribe();
+    }
+
+    private padZero(number): string{
+        return number < 10 ? '0' + number : number;
     }
 }

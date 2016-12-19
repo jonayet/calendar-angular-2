@@ -59,7 +59,7 @@ export class CalendarService {
 
         for(let day of validDays){
             event = day.events.find((event) => {
-                return event.start.isSameOrAfter(now, 'minutes');
+                return event.start.isSameOrAfter(now, 'seconds');
             });
             if(event) {break;}
         }

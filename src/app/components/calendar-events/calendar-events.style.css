@@ -1,3 +1,32 @@
+:host{
+    display: block;
+}
+
 .calendar-events{
 
+}
+
+.calendar-events .calendar-events_body{
+    height: 200px;
+}
+
+.calendar-events .calendar-events_header{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.calendar-events_event .calendar-events_event_time{
+    font-size: 1em;
+
+}
+
+.calendar-events_event .calendar-events_event_title{
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.calendar-events .calendar-events_add{
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
 }

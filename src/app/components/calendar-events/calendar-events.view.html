@@ -1,12 +1,18 @@
 <div class="calendar-events">
-    <div *ngFor="let event of events" class="row">
-        <div class="col-md-4">
-            {{event.start.format('hh:mm')}} - {{event.end.format('hh:mm')}}
+    <div *ngIf="events.length" class="calendar-events_body">
+        <div class="calendar-events_header">
+            Events
         </div>
-        <div class="col-md-8">
-            {{event.title}}
+
+        <div *ngFor="let event of events" class="calendar-events_event row">
+            <div class="calendar-events_event_time col-xs-12 col-md-4">
+                {{event.start.format('hh:mm')}} - {{event.end.format('hh:mm')}}
+            </div>
+            <div class="calendar-events_event_title col-xs-12 col-md-8">
+                {{event.title}}
+            </div>
         </div>
     </div>
-    <button (click)="addEvent()">Add</button>
+    <button (click)="addEvent()" class="calendar-events_add">Add</button>
     <!--<calendar-add-event [day]="day" (afterEventAdded)="eventAdded($event)"></calendar-add-event>-->
 </div>

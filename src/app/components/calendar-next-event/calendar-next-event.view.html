@@ -1,12 +1,11 @@
-<div class="calendar-next-event">
-    <div *ngIf="!nextEvent">
-        No Event
+<div *ngIf="nextEvent" class="calendar-next-event">
+    <div class="calendar-next-event_header">
+        Next Event
     </div>
-    <div *ngIf="nextEvent">
-        Next Event: {{nextEvent.title}}
-        <br>
-        {{nextEvent.start.format('hh:mm a')}}
-        <br>
-        {{remainingTime}}
+    <div class="calendar-next-event_title">
+        {{nextEvent.title}}
+    </div>
+    <div class="calendar-next-event_time" [ngStyle]="{'color': this.showWarning ? 'red': 'black'}">
+        {{eventTime}}
     </div>
 </div>

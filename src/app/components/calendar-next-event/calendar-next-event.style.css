@@ -1,3 +1,16 @@
 .calendar-next-event{
 
 }
+
+.calendar-next-event .calendar-next-event_header{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.calendar-next-event .calendar-next-event_title{
+    font-size: 1.2em;
+}
+
+.calendar-next-event .calendar-next-event_time{
+    font-size: 2em;
+}
