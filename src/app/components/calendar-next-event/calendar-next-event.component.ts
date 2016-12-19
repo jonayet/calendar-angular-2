@@ -30,6 +30,7 @@ export class CalendarNextEventComponent implements OnInit, OnDestroy{
 
     showNextEvent(){
         this.nextEvent = this.calendarService.getNextEvent();
+        if(!this.nextEvent) {return;}
         this.remainingTime = this.nextEvent.start.from(moment());
     }
 
