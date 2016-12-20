@@ -17,56 +17,49 @@
     margin-top: 30px;
 }
 
-
-button {
-    -webkit-appearance: none;
-    background: transparent;
-    border: 0;
-    outline:0;
-}
-
-svg {
+.calendar svg {
     padding: 5px;
 }
 
-.arrow {
+.calendar button.calendar_btn {
+    -webkit-appearance: none;
+    background: transparent;
+    border: 0;
+    outline: 0;
     cursor: pointer;
-    position: absolute;
-    top: 50%;
-    margin-top: -45px;
-    margin-left: -35px;
-    width: 70px;
-    height: 90px;
+    width: 60px;
+    height: 60px;
+    display: block;
 }
 
-.left {
-    left: 42%;
+.calendar button.calendar_btn-left {
+    margin-top: 50px;
 }
 
-.right {
-    left: 58%;
+.calendar button.calendar_btn-right {
+    margin-top: 50px;
 }
 
-.left:hover polyline,
-.left:focus polyline {
-    stroke-width: 3;
+.calendar button.calendar_btn-up {
+    margin: 0 auto;
 }
 
-.left:active polyline {
+.calendar button.calendar_btn-down {
+    margin: 0 auto;
+}
+
+.calendar button.calendar_btn:hover polyline,
+.calendar button.calendar_btn:focus polyline {
+    stroke-width: 4;
+}
+
+.calendar button.calendar_btn:active polyline {
     stroke-width: 6;
     transition: all 100ms ease-in-out;
 }
 
-.right:hover polyline,
-.right:focus polyline {
-    stroke-width: 3;
-}
-
-.right:active polyline {
-    stroke-width: 6;
-    transition: all 100ms ease-in-out;
-}
-
-polyline {
+.calendar polyline {
+    stroke: #000000;
+    stroke-width: 2;
     transition: all 250ms ease-in-out;
 }
