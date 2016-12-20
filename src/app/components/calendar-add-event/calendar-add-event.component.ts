@@ -17,10 +17,13 @@ export class CalendarAddEventComponent implements OnInit{
     date: string;
     startTime: string;
     endTime: string;
+
     iconColors: string[] = [
-        'red',
-        'green',
-        'blue'
+        'coral',
+        'gold',
+        'cornflowerblue',
+        'lightblue',
+        'hotpink'
     ];
     isVisible: boolean = true;
 

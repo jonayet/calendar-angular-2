@@ -1,15 +1,16 @@
 <div class="calendar">
+    <div class="calendar_md_top-offset hidden-xs hidden-sm"></div>
     <div class="row">
         <div class="col-xs-6 col-md-12">
             <div class="calendar_show-previous col-xs-12 col-md-offset-1 col-md-1">
                 <button (click)="showPreviousDays()" class="calendar_btn calendar_btn-left hidden-xs hidden-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 60 60">
-                        <polyline fill="none" stroke-linecap="round" stroke-linejoin="round" points="30,60 0,30 30,0"></polyline>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100">
+                        <polyline fill="none" stroke-linecap="round" stroke-linejoin="round" points="50,100 0,50 50,0"></polyline>
                     </svg>
                 </button>
                 <button (click)="showPreviousDays()" class="calendar_btn calendar_btn-up hidden-md hidden-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 60 60">
-                        <polyline fill="none" stroke-linecap="round" stroke-linejoin="round" points="0,30 30,0 60,30"></polyline>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100">
+                        <polyline fill="none" stroke-linecap="round" stroke-linejoin="round" points="0,50 50,0 100,50"></polyline>
                     </svg>
                 </button>
             </div>
@@ -29,7 +30,7 @@
                         <polyline fill="none" stroke-linecap="round" stroke-linejoin="round" points="30,60 60,30 30,0"></polyline>
                     </svg>
                 </button>
-                <button (click)="showPreviousDays()" class="calendar_btn calendar_btn-down hidden-md hidden-lg">
+                <button (click)="showNextDays()" class="calendar_btn calendar_btn-down hidden-md hidden-lg">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 60 60">
                         <polyline fill="none" stroke-linecap="round" stroke-linejoin="round" points="0,30 30,60 60,30"></polyline>
                     </svg>
@@ -37,7 +38,7 @@
             </div>
         </div>
         <div class="calendar_col-2-top-offset"></div>
-        <div class="col-xs-6 col-md-12">
+        <div class="calendar_events col-xs-6 col-md-7 col-md-offset-2">
             <calendar-events [day]="selectedDay" [events]="selectedDay.events" (afterEventAdded)="afterEventAdded($event)"></calendar-events>
             <calendar-next-event></calendar-next-event>
         </div>

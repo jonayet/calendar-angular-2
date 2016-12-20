@@ -13,8 +13,16 @@
     padding: 2px;
 }
 
+.calendar .calendar_md_top-offset{
+    margin-top: 100px;
+}
+
 .calendar .calendar_col-2-top-offset{
     margin-top: 30px;
+}
+
+.calendar .calendar_events{
+    margin-top: 20px;
 }
 
 .calendar svg {
@@ -49,9 +57,9 @@
 }
 
 .calendar button.calendar_btn:hover polyline,
-.calendar button.calendar_btn:focus polyline {
-    stroke-width: 4;
-}
+ .calendar button.calendar_btn:focus polyline {
+     stroke-width: 4;
+ }
 
 .calendar button.calendar_btn:active polyline {
     stroke-width: 6;

@@ -66,4 +66,5 @@
 .calendar-day .calendar-day_event_number{
     font-size: 1em;
     font-weight: bold;
+    margin-right: 0;
 }

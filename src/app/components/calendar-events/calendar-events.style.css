@@ -7,7 +7,7 @@
 }
 
 .calendar-events .calendar-events_body{
-    height: 200px;
+
 }
 
 .calendar-events .calendar-events_header{
@@ -26,7 +26,47 @@
 }
 
 .calendar-events .calendar-events_add{
+    -webkit-appearance: none;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    display: block;
+}
+
+.calendar-events .calendar-events_add.calendar-events_add-pc{
+    position: absolute;
+    right: 20px;
+    top: 100%;
+}
+
+.calendar-events .calendar-events_add.calendar-events_add-mobile{
     position: fixed;
-    right: 10px;
-    bottom: 10px;
+    right: 20px;
+    bottom: 20px;
+}
+
+.calendar-events svg{
+    width: 60px;
+    height: 60px;
+    padding: 5px;
+    display: block;
+}
+
+.calendar-events .calendar-events_add circle{
+    stroke-width: 20;
+    stroke: crimson;
+    fill: crimson;
+}
+
+.calendar-events button.calendar-events_add:hover circle{
+    stroke: darkmagenta;
+    fill: darkmagenta;
+    transition: all 100ms ease-in-out;
+}
+
+.calendar-events button.calendar-events_add:active circle {
+    stroke: coral;
+    fill: coral;
+    transition: all 100ms ease-in-out;
 }

@@ -6,13 +6,24 @@
 
         <div *ngFor="let event of events" class="calendar-events_event row">
             <div class="calendar-events_event_time col-xs-12 col-md-4">
-                {{event.start.format('hh:mm')}} - {{event.end.format('hh:mm')}}
+                {{event.start.format('hh:mm A')}} - {{event.end.format('hh:mm A')}}
             </div>
             <div class="calendar-events_event_title col-xs-12 col-md-8">
                 {{event.title}}
             </div>
         </div>
     </div>
-    <button (click)="addEvent()" class="calendar-events_add">Add</button>
-    <!--<calendar-add-event [day]="day" (afterEventAdded)="eventAdded($event)"></calendar-add-event>-->
+    <button (click)="addEvent()" class="calendar-events_add calendar-events_add-pc hidden-xs hidden-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100" (click)="addEvent()">
+            <circle cx="50" cy="50" r="50"></circle>
+            <path stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" d="M10,50 h30,50 M50,10 v50,30" ></path>
+        </svg>
+    </button>
+
+    <button (click)="addEvent()" class="calendar-events_add calendar-events_add-mobile hidden-md hidden-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100" (click)="addEvent()">
+            <circle cx="50" cy="50" r="50"></circle>
+            <path stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" d="M10,50 h30,50 M50,10 v50,30" ></path>
+        </svg>
+    </button>
 </div>
