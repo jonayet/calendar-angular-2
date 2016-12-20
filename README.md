@@ -24,7 +24,7 @@
 * Module Blunder: Webpack
 
 #Build Instructions
-* Install dependencies first       'npm install'
-* Run development mode             'npm start'
-* Run test suits                   'npm run test'
-* Build for production             'npm run build'
+* Install dependencies first, 'npm install'
+* Run development mode, 'npm start'
+* Run test suits, 'npm run test'
+* Build for production, 'npm run build'
