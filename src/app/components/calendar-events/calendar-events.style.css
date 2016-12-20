@@ -54,7 +54,7 @@
 }
 
 .calendar-events .calendar-events_add circle{
-    stroke-width: 20;
+    stroke-width: 0;
     stroke: crimson;
     fill: crimson;
 }
