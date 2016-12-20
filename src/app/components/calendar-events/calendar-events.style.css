@@ -60,13 +60,13 @@
 }
 
 .calendar-events button.calendar-events_add:hover circle{
-    stroke: darkmagenta;
-    fill: darkmagenta;
+    stroke: coral;
+    fill: coral;
     transition: all 100ms ease-in-out;
 }
 
 .calendar-events button.calendar-events_add:active circle {
-    stroke: coral;
-    fill: coral;
+    stroke: darkmagenta;
+    fill: darkmagenta;
     transition: all 100ms ease-in-out;
 }
