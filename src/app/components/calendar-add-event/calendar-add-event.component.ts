@@ -11,8 +11,6 @@ import {ICalendarDay} from '../calendar/ICalendarDay';
     styleUrls: ['./calendar-add-event.style.css']
 })
 export class CalendarAddEventComponent implements OnInit{
-    //@Input() day: ICalendarDay;
-    //@Output() afterEventAdded = new EventEmitter<ICalendarEvent>();
     event: ICalendarEvent;
     date: string;
     startTime: string;
@@ -51,18 +49,9 @@ export class CalendarAddEventComponent implements OnInit{
         day.moment = moment(this.date);
         this.calendarService.addEvent(day, event);
         this.router.navigate(['/']);
-
-        //this.afterEventAdded.emit(event);
-        //this.close();
-    }
-
-    open(){
-        this.initialize();
-        this.isVisible = true;
     }
 
     close(){
-        //this.isVisible = false;
         this.router.navigate(['/']);
     }
 
