@@ -5,12 +5,13 @@
         </div>
 
         <div *ngFor="let event of events" class="calendar-events_event row">
-            <div class="calendar-events_event_time col-xs-12 col-md-4">
+            <div class="calendar-events_event_time col-xs-12 col-md-3">
                 {{event.start.format('hh:mm A')}} - {{event.end.format('hh:mm A')}}
             </div>
-            <div class="calendar-events_event_title col-xs-12 col-md-8">
+            <div class="calendar-events_event_title col-xs-11 col-md-8">
                 {{event.title}}
             </div>
+            <button type="button" class="close" (click)="removeEvent(event)">&times;</button>
         </div>
     </div>
     <button (click)="addEvent()" class="calendar-events_add calendar-events_add-pc hidden-xs hidden-sm">

@@ -24,4 +24,17 @@ export class CalendarEventsComponent {
     eventAdded(event){
         this.afterEventAdded.emit(this.day);
     }
+
+    removeEvent(event: ICalendarEvent){
+        let eventIndex = -1;
+        for (let i = 0; i < this.events.length; i++){
+            if( this.events[i].id === event.id){
+                eventIndex = i;
+                break;
+            }
+        }
+        if(eventIndex !== -1){
+            this.events.splice(eventIndex, 1);
+        }
+    }
 }

@@ -1,4 +1,4 @@
-# Simple Calendar app using Angular 2 and Moment.js.
+Simple Calendar app using Angular 2 and Moment.js.
 
 #Functionalities
 * Show weekdays, go next or previous days. Responsive design.

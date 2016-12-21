@@ -10,17 +10,25 @@
 
 }
 
+.calendar-events .calendar-events_event{
+    margin: 5px 0;
+    padding: 5px 5px;
+    background: #e3e3e3;
+}
+
 .calendar-events .calendar-events_header{
     font-size: 1.2em;
     font-weight: bold;
 }
 
 .calendar-events_event .calendar-events_event_time{
+    padding: 0;
     font-size: 1em;
 
 }
 
 .calendar-events_event .calendar-events_event_title{
+    padding: 0;
     font-size: 1em;
     font-weight: bold;
 }
