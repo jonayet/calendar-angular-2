@@ -45,6 +45,10 @@ export class CalendarComponent implements OnInit{
         this.nextEventComponent.showNextEvent();
     }
 
+    afterEventRemoved(){
+        this.nextEventComponent.showNextEvent();
+    }
+
     private updateSelectedDay(selectedDay: ICalendarDay){
         this.selectedDay = selectedDay;
         this.days.forEach((day) => {

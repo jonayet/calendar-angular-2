@@ -15,6 +15,7 @@ export class CalendarAddEventComponent implements OnInit{
     date: string;
     startTime: string;
     endTime: string;
+    counter: number = 0;
 
     iconColors: string[] = [
         'coral',
@@ -44,7 +45,8 @@ export class CalendarAddEventComponent implements OnInit{
         this.event.start = this.constructTime(this.date, this.startTime);
         this.event.end = this.constructTime(this.date, this.endTime);
 
-        let event = Object.assign({}, this.event);
+        const id = moment().milliseconds() + this.counter++;
+        let event = Object.assign({id: id}, this.event);
         let day = <ICalendarDay>{};
         day.moment = moment(this.date);
         this.calendarService.addEvent(day, event);

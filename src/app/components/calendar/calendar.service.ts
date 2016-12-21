@@ -49,6 +49,21 @@ export class CalendarService {
         this.calendarPersistService.save(this.eventsMap);
     }
 
+    removeEvent(day: ICalendarDay, event: ICalendarEvent){
+        let eventIndex = -1;
+        for (let i = 0; i < day.events.length; i++){
+            if( day.events[i].id === event.id){
+                eventIndex = i;
+                break;
+            }
+        }
+        if(eventIndex !== -1){
+            day.events.splice(eventIndex, 1);
+            this.bindEvents(day, day.events);
+            this.calendarPersistService.save(this.eventsMap);
+        }
+    }
+
     getNextEvent(): ICalendarEvent{
         let event: ICalendarEvent = null;
         const now = moment();
