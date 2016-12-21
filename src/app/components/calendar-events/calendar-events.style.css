@@ -21,10 +21,16 @@
     font-weight: bold;
 }
 
+.calendar-events .calendar-events_event_icon{
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    margin-right: 3px;
+}
+
 .calendar-events_event .calendar-events_event_time{
     padding: 0;
     font-size: 1em;
-
 }
 
 .calendar-events_event .calendar-events_event_title{

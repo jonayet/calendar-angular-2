@@ -3,9 +3,11 @@
         Next Event
     </div>
     <div class="calendar-next-event_title">
+        <div class="calendar-next-event_event_icon" [ngStyle]="{'background': nextEvent.iconColor}">
+        </div>
         {{nextEvent.title}}
     </div>
-    <div class="calendar-next-event_time" [ngStyle]="{'color': this.showWarning ? 'red': 'black'}">
+    <div class="calendar-next-event_time" [ngStyle]="{'color': showWarning ? 'red': 'black'}">
         {{eventTime}}
     </div>
 </div>
