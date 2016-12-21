@@ -7,3 +7,22 @@
 .app{
     font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
 }
+
+.app a.app_github{
+    margin-top: 100px;
+    text-decoration: none;
+    cursor: pointer;
+    display: block;
+}
+
+.app a.app_github {
+    color: black;
+}
+.app a.app_github:hover {
+    color: black;
+}
+
+.app .app_github p{
+    display: inline-block;
+    margin-left: 10px;
+}
