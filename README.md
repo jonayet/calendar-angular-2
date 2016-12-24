@@ -21,7 +21,7 @@ Simple Calendar app using Angular 2 and Moment.js.
 * Date Time Library: Moment.js
 * Test Framework: Karma with Jasmine
 * Package Manager: NPM
-* Module Blunder: Webpack
+* Module Bundler: Webpack
 
 #Build Instructions
 * Install dependencies first, 'npm install'
